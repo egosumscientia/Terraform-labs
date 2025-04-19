@@ -1,0 +1,13 @@
+cat > .gitignore <<EOF
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.backup
+*.tfvars
+terraform.tfvars
+
+# Archivos temporales/documentos
+*.odt
+*.tmp
+*.swp
+EOF

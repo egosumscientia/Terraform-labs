@@ -1,0 +1,768 @@
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab02$ ls
+main.tf  output.tf  provider.tf  terraform.tfvars  variables.tf
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab02$ terraform init
+Initializing the backend...
+Initializing provider plugins...
+- Finding latest version of hashicorp/azurerm...
+- Installing hashicorp/azurerm v4.26.0...
+- Installed hashicorp/azurerm v4.26.0 (signed by HashiCorp)
+Terraform has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that Terraform can guarantee to make the same selections by default when
+you run "terraform init" in the future.
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab02$ terraform plan
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # azurerm_resource_group.paulo_rg will be created
+  + resource "azurerm_resource_group" "paulo_rg" {
+      + id       = (known after apply)
+      + location = "eastus"
+      + name     = "rg-pauloenrique-lab"
+    }
+
+  # azurerm_storage_account.paulo_storage will be created
+  + resource "azurerm_storage_account" "paulo_storage" {
+      + access_tier                        = (known after apply)
+      + account_kind                       = "StorageV2"
+      + account_replication_type           = "LRS"
+      + account_tier                       = "Standard"
+      + allow_nested_items_to_be_public    = true
+      + cross_tenant_replication_enabled   = false
+      + default_to_oauth_authentication    = false
+      + dns_endpoint_type                  = "Standard"
+      + https_traffic_only_enabled         = true
+      + id                                 = (known after apply)
+      + infrastructure_encryption_enabled  = false
+      + is_hns_enabled                     = false
+      + large_file_share_enabled           = (known after apply)
+      + local_user_enabled                 = true
+      + location                           = "eastus"
+      + min_tls_version                    = "TLS1_2"
+      + name                               = "paulostorage7450"
+      + nfsv3_enabled                      = false
+      + primary_access_key                 = (sensitive value)
+      + primary_blob_connection_string     = (sensitive value)
+      + primary_blob_endpoint              = (known after apply)
+      + primary_blob_host                  = (known after apply)
+      + primary_blob_internet_endpoint     = (known after apply)
+      + primary_blob_internet_host         = (known after apply)
+      + primary_blob_microsoft_endpoint    = (known after apply)
+      + primary_blob_microsoft_host        = (known after apply)
+      + primary_connection_string          = (sensitive value)
+      + primary_dfs_endpoint               = (known after apply)
+      + primary_dfs_host                   = (known after apply)
+      + primary_dfs_internet_endpoint      = (known after apply)
+      + primary_dfs_internet_host          = (known after apply)
+      + primary_dfs_microsoft_endpoint     = (known after apply)
+      + primary_dfs_microsoft_host         = (known after apply)
+      + primary_file_endpoint              = (known after apply)
+      + primary_file_host                  = (known after apply)
+      + primary_file_internet_endpoint     = (known after apply)
+      + primary_file_internet_host         = (known after apply)
+      + primary_file_microsoft_endpoint    = (known after apply)
+      + primary_file_microsoft_host        = (known after apply)
+      + primary_location                   = (known after apply)
+      + primary_queue_endpoint             = (known after apply)
+      + primary_queue_host                 = (known after apply)
+      + primary_queue_microsoft_endpoint   = (known after apply)
+      + primary_queue_microsoft_host       = (known after apply)
+      + primary_table_endpoint             = (known after apply)
+      + primary_table_host                 = (known after apply)
+      + primary_table_microsoft_endpoint   = (known after apply)
+      + primary_table_microsoft_host       = (known after apply)
+      + primary_web_endpoint               = (known after apply)
+      + primary_web_host                   = (known after apply)
+      + primary_web_internet_endpoint      = (known after apply)
+      + primary_web_internet_host          = (known after apply)
+      + primary_web_microsoft_endpoint     = (known after apply)
+      + primary_web_microsoft_host         = (known after apply)
+      + public_network_access_enabled      = true
+      + queue_encryption_key_type          = "Service"
+      + resource_group_name                = "rg-pauloenrique-lab"
+      + secondary_access_key               = (sensitive value)
+      + secondary_blob_connection_string   = (sensitive value)
+      + secondary_blob_endpoint            = (known after apply)
+      + secondary_blob_host                = (known after apply)
+      + secondary_blob_internet_endpoint   = (known after apply)
+      + secondary_blob_internet_host       = (known after apply)
+      + secondary_blob_microsoft_endpoint  = (known after apply)
+      + secondary_blob_microsoft_host      = (known after apply)
+      + secondary_connection_string        = (sensitive value)
+      + secondary_dfs_endpoint             = (known after apply)
+      + secondary_dfs_host                 = (known after apply)
+      + secondary_dfs_internet_endpoint    = (known after apply)
+      + secondary_dfs_internet_host        = (known after apply)
+      + secondary_dfs_microsoft_endpoint   = (known after apply)
+      + secondary_dfs_microsoft_host       = (known after apply)
+      + secondary_file_endpoint            = (known after apply)
+      + secondary_file_host                = (known after apply)
+      + secondary_file_internet_endpoint   = (known after apply)
+      + secondary_file_internet_host       = (known after apply)
+      + secondary_file_microsoft_endpoint  = (known after apply)
+      + secondary_file_microsoft_host      = (known after apply)
+      + secondary_location                 = (known after apply)
+      + secondary_queue_endpoint           = (known after apply)
+      + secondary_queue_host               = (known after apply)
+      + secondary_queue_microsoft_endpoint = (known after apply)
+      + secondary_queue_microsoft_host     = (known after apply)
+      + secondary_table_endpoint           = (known after apply)
+      + secondary_table_host               = (known after apply)
+      + secondary_table_microsoft_endpoint = (known after apply)
+      + secondary_table_microsoft_host     = (known after apply)
+      + secondary_web_endpoint             = (known after apply)
+      + secondary_web_host                 = (known after apply)
+      + secondary_web_internet_endpoint    = (known after apply)
+      + secondary_web_internet_host        = (known after apply)
+      + secondary_web_microsoft_endpoint   = (known after apply)
+      + secondary_web_microsoft_host       = (known after apply)
+      + sftp_enabled                       = false
+      + shared_access_key_enabled          = true
+      + table_encryption_key_type          = "Service"
+
+      + blob_properties (known after apply)
+
+      + network_rules (known after apply)
+
+      + queue_properties (known after apply)
+
+      + routing (known after apply)
+
+      + share_properties (known after apply)
+
+      + static_website (known after apply)
+    }
+
+Plan: 2 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + azure_subscription_id    = "5f55b5a1-09ef-4b87-b02d-30e1a8347b3d"
+  + created_resource_group   = "rg-pauloenrique-lab"
+  + storage_account_blob_url = (known after apply)
+  + terraform_user_email     = "petorovalder@hotmail.com"
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run "terraform apply" now.
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab02$ terraform apply -auto-approve
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # azurerm_resource_group.paulo_rg will be created
+  + resource "azurerm_resource_group" "paulo_rg" {
+      + id       = (known after apply)
+      + location = "eastus"
+      + name     = "rg-pauloenrique-lab"
+    }
+
+  # azurerm_storage_account.paulo_storage will be created
+  + resource "azurerm_storage_account" "paulo_storage" {
+      + access_tier                        = (known after apply)
+      + account_kind                       = "StorageV2"
+      + account_replication_type           = "LRS"
+      + account_tier                       = "Standard"
+      + allow_nested_items_to_be_public    = true
+      + cross_tenant_replication_enabled   = false
+      + default_to_oauth_authentication    = false
+      + dns_endpoint_type                  = "Standard"
+      + https_traffic_only_enabled         = true
+      + id                                 = (known after apply)
+      + infrastructure_encryption_enabled  = false
+      + is_hns_enabled                     = false
+      + large_file_share_enabled           = (known after apply)
+      + local_user_enabled                 = true
+      + location                           = "eastus"
+      + min_tls_version                    = "TLS1_2"
+      + name                               = "paulostorage7450"
+      + nfsv3_enabled                      = false
+      + primary_access_key                 = (sensitive value)
+      + primary_blob_connection_string     = (sensitive value)
+      + primary_blob_endpoint              = (known after apply)
+      + primary_blob_host                  = (known after apply)
+      + primary_blob_internet_endpoint     = (known after apply)
+      + primary_blob_internet_host         = (known after apply)
+      + primary_blob_microsoft_endpoint    = (known after apply)
+      + primary_blob_microsoft_host        = (known after apply)
+      + primary_connection_string          = (sensitive value)
+      + primary_dfs_endpoint               = (known after apply)
+      + primary_dfs_host                   = (known after apply)
+      + primary_dfs_internet_endpoint      = (known after apply)
+      + primary_dfs_internet_host          = (known after apply)
+      + primary_dfs_microsoft_endpoint     = (known after apply)
+      + primary_dfs_microsoft_host         = (known after apply)
+      + primary_file_endpoint              = (known after apply)
+      + primary_file_host                  = (known after apply)
+      + primary_file_internet_endpoint     = (known after apply)
+      + primary_file_internet_host         = (known after apply)
+      + primary_file_microsoft_endpoint    = (known after apply)
+      + primary_file_microsoft_host        = (known after apply)
+      + primary_location                   = (known after apply)
+      + primary_queue_endpoint             = (known after apply)
+      + primary_queue_host                 = (known after apply)
+      + primary_queue_microsoft_endpoint   = (known after apply)
+      + primary_queue_microsoft_host       = (known after apply)
+      + primary_table_endpoint             = (known after apply)
+      + primary_table_host                 = (known after apply)
+      + primary_table_microsoft_endpoint   = (known after apply)
+      + primary_table_microsoft_host       = (known after apply)
+      + primary_web_endpoint               = (known after apply)
+      + primary_web_host                   = (known after apply)
+      + primary_web_internet_endpoint      = (known after apply)
+      + primary_web_internet_host          = (known after apply)
+      + primary_web_microsoft_endpoint     = (known after apply)
+      + primary_web_microsoft_host         = (known after apply)
+      + public_network_access_enabled      = true
+      + queue_encryption_key_type          = "Service"
+      + resource_group_name                = "rg-pauloenrique-lab"
+      + secondary_access_key               = (sensitive value)
+      + secondary_blob_connection_string   = (sensitive value)
+      + secondary_blob_endpoint            = (known after apply)
+      + secondary_blob_host                = (known after apply)
+      + secondary_blob_internet_endpoint   = (known after apply)
+      + secondary_blob_internet_host       = (known after apply)
+      + secondary_blob_microsoft_endpoint  = (known after apply)
+      + secondary_blob_microsoft_host      = (known after apply)
+      + secondary_connection_string        = (sensitive value)
+      + secondary_dfs_endpoint             = (known after apply)
+      + secondary_dfs_host                 = (known after apply)
+      + secondary_dfs_internet_endpoint    = (known after apply)
+      + secondary_dfs_internet_host        = (known after apply)
+      + secondary_dfs_microsoft_endpoint   = (known after apply)
+      + secondary_dfs_microsoft_host       = (known after apply)
+      + secondary_file_endpoint            = (known after apply)
+      + secondary_file_host                = (known after apply)
+      + secondary_file_internet_endpoint   = (known after apply)
+      + secondary_file_internet_host       = (known after apply)
+      + secondary_file_microsoft_endpoint  = (known after apply)
+      + secondary_file_microsoft_host      = (known after apply)
+      + secondary_location                 = (known after apply)
+      + secondary_queue_endpoint           = (known after apply)
+      + secondary_queue_host               = (known after apply)
+      + secondary_queue_microsoft_endpoint = (known after apply)
+      + secondary_queue_microsoft_host     = (known after apply)
+      + secondary_table_endpoint           = (known after apply)
+      + secondary_table_host               = (known after apply)
+      + secondary_table_microsoft_endpoint = (known after apply)
+      + secondary_table_microsoft_host     = (known after apply)
+      + secondary_web_endpoint             = (known after apply)
+      + secondary_web_host                 = (known after apply)
+      + secondary_web_internet_endpoint    = (known after apply)
+      + secondary_web_internet_host        = (known after apply)
+      + secondary_web_microsoft_endpoint   = (known after apply)
+      + secondary_web_microsoft_host       = (known after apply)
+      + sftp_enabled                       = false
+      + shared_access_key_enabled          = true
+      + table_encryption_key_type          = "Service"
+
+      + blob_properties (known after apply)
+
+      + network_rules (known after apply)
+
+      + queue_properties (known after apply)
+
+      + routing (known after apply)
+
+      + share_properties (known after apply)
+
+      + static_website (known after apply)
+    }
+
+Plan: 2 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + azure_subscription_id    = "5f55b5a1-09ef-4b87-b02d-30e1a8347b3d"
+  + created_resource_group   = "rg-pauloenrique-lab"
+  + storage_account_blob_url = (known after apply)
+  + terraform_user_email     = "petorovalder@hotmail.com"
+azurerm_resource_group.paulo_rg: Creating...
+azurerm_resource_group.paulo_rg: Still creating... [10s elapsed]
+azurerm_resource_group.paulo_rg: Creation complete after 18s [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/rg-pauloenrique-lab]
+azurerm_storage_account.paulo_storage: Creating...
+azurerm_storage_account.paulo_storage: Still creating... [10s elapsed]
+azurerm_storage_account.paulo_storage: Still creating... [20s elapsed]
+azurerm_storage_account.paulo_storage: Still creating... [30s elapsed]
+azurerm_storage_account.paulo_storage: Still creating... [40s elapsed]
+azurerm_storage_account.paulo_storage: Still creating... [50s elapsed]
+azurerm_storage_account.paulo_storage: Still creating... [1m0s elapsed]
+azurerm_storage_account.paulo_storage: Still creating... [1m10s elapsed]
+azurerm_storage_account.paulo_storage: Still creating... [1m20s elapsed]
+azurerm_storage_account.paulo_storage: Creation complete after 1m20s [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/rg-pauloenrique-lab/providers/Microsoft.Storage/storageAccounts/paulostorage7450]
+
+Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+azure_subscription_id = "5f55b5a1-09ef-4b87-b02d-30e1a8347b3d"
+created_resource_group = "rg-pauloenrique-lab"
+storage_account_blob_url = "https://paulostorage7450.blob.core.windows.net/"
+terraform_user_email = "petorovalder@hotmail.com"
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab02$ terraform init
+Initializing the backend...
+Initializing provider plugins...
+- Reusing previous version of hashicorp/azurerm from the dependency lock file
+- Using previously-installed hashicorp/azurerm v4.26.0
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab02$ terraform plan
+azurerm_resource_group.paulo_rg: Refreshing state... [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/rg-pauloenrique-lab]
+azurerm_storage_account.paulo_storage: Refreshing state... [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/rg-pauloenrique-lab/providers/Microsoft.Storage/storageAccounts/paulostorage7450]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # azurerm_storage_container.paulo_container will be created
+  + resource "azurerm_storage_container" "paulo_container" {
+      + container_access_type             = "blob"
+      + default_encryption_scope          = (known after apply)
+      + encryption_scope_override_enabled = true
+      + has_immutability_policy           = (known after apply)
+      + has_legal_hold                    = (known after apply)
+      + id                                = (known after apply)
+      + metadata                          = (known after apply)
+      + name                              = "public-container"
+      + resource_manager_id               = (known after apply)
+      + storage_account_name              = "paulostorage7450"
+    }
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+╷
+│ Warning: Argument is deprecated
+│ 
+│   with azurerm_storage_container.paulo_container,
+│   on main.tf line 16, in resource "azurerm_storage_container" "paulo_container":
+│   16:     storage_account_name  = azurerm_storage_account.paulo_storage.name
+│ 
+│ the `storage_account_name` property has been deprecated in favour of `storage_account_id` and will be removed in version 5.0 of the Provider.
+╵
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run "terraform apply" now.
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab02$ terraform apply -auto-approve
+azurerm_resource_group.paulo_rg: Refreshing state... [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/rg-pauloenrique-lab]
+azurerm_storage_account.paulo_storage: Refreshing state... [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/rg-pauloenrique-lab/providers/Microsoft.Storage/storageAccounts/paulostorage7450]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # azurerm_storage_container.paulo_container will be created
+  + resource "azurerm_storage_container" "paulo_container" {
+      + container_access_type             = "blob"
+      + default_encryption_scope          = (known after apply)
+      + encryption_scope_override_enabled = true
+      + has_immutability_policy           = (known after apply)
+      + has_legal_hold                    = (known after apply)
+      + id                                = (known after apply)
+      + metadata                          = (known after apply)
+      + name                              = "public-container"
+      + resource_manager_id               = (known after apply)
+      + storage_account_name              = "paulostorage7450"
+    }
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+azurerm_storage_container.paulo_container: Creating...
+azurerm_storage_container.paulo_container: Creation complete after 4s [id=https://paulostorage7450.blob.core.windows.net/public-container]
+╷
+│ Warning: Argument is deprecated
+│ 
+│   with azurerm_storage_container.paulo_container,
+│   on main.tf line 16, in resource "azurerm_storage_container" "paulo_container":
+│   16:     storage_account_name  = azurerm_storage_account.paulo_storage.name
+│ 
+│ the `storage_account_name` property has been deprecated in favour of `storage_account_id` and will be removed in version 5.0 of the Provider.
+│ 
+│ (and one more similar warning elsewhere)
+╵
+
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+azure_subscription_id = "5f55b5a1-09ef-4b87-b02d-30e1a8347b3d"
+created_resource_group = "rg-pauloenrique-lab"
+storage_account_blob_url = "https://paulostorage7450.blob.core.windows.net/"
+terraform_user_email = "petorovalder@hotmail.com"
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab02$ az account show
+{
+  "environmentName": "AzureCloud",
+  "homeTenantId": "093c684c-622c-4a8c-9180-47802a4d322a",
+  "id": "5f55b5a1-09ef-4b87-b02d-30e1a8347b3d",
+  "isDefault": true,
+  "managedByTenants": [],
+  "name": "Suscripción de Azure 1",
+  "state": "Enabled",
+  "tenantDefaultDomain": "petorovalderhotmail.onmicrosoft.com",
+  "tenantDisplayName": "Directorio predeterminado",
+  "tenantId": "093c684c-622c-4a8c-9180-47802a4d322a",
+  "user": {
+    "name": "petorovalder@hotmail.com",
+    "type": "user"
+  }
+}
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab02$ 
+
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab02$ az storage blob upload \
+  --account-name paulostorage7450 \
+  --container-name public-container \
+  --name ejemplo.txt \
+  --file ./ejemplo.txt \
+  --auth-mode login
+
+You do not have the required permissions needed to perform this operation.
+Depending on your operation, you may need to be assigned one of the following roles:
+    "Storage Blob Data Owner"
+    "Storage Blob Data Contributor"
+    "Storage Blob Data Reader"
+    "Storage Queue Data Contributor"
+    "Storage Queue Data Reader"
+    "Storage Table Data Contributor"
+    "Storage Table Data Reader"
+
+If you want to use the old authentication method and allow querying for the right account key, please use the "--auth-mode" parameter and "key" value.
+                    
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab02$ az storage account show \
+  --name paulostorage7450 \
+  --resource-group rg-pauloenrique-lab \
+  --subscription "5f55b5a1-09ef-4b87-b02d-30e1a8347b3d"
+{
+  "accessTier": "Hot",
+  "accountMigrationInProgress": null,
+  "allowBlobPublicAccess": true,
+  "allowCrossTenantReplication": false,
+  "allowSharedKeyAccess": true,
+  "allowedCopyScope": null,
+  "azureFilesIdentityBasedAuthentication": null,
+  "blobRestoreStatus": null,
+  "creationTime": "2025-04-19T17:32:32.789804+00:00",
+  "customDomain": null,
+  "defaultToOAuthAuthentication": false,
+  "dnsEndpointType": "Standard",
+  "enableExtendedGroups": null,
+  "enableHttpsTrafficOnly": true,
+  "enableNfsV3": false,
+  "encryption": {
+    "encryptionIdentity": null,
+    "keySource": "Microsoft.Storage",
+    "keyVaultProperties": null,
+    "requireInfrastructureEncryption": null,
+    "services": {
+      "blob": {
+        "enabled": true,
+        "keyType": "Account",
+        "lastEnabledTime": "2025-04-19T17:32:32.977307+00:00"
+      },
+      "file": {
+        "enabled": true,
+        "keyType": "Account",
+        "lastEnabledTime": "2025-04-19T17:32:32.977307+00:00"
+      },
+      "queue": null,
+      "table": null
+    }
+  },
+  "extendedLocation": null,
+  "failoverInProgress": null,
+  "geoReplicationStats": null,
+  "id": "/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/rg-pauloenrique-lab/providers/Microsoft.Storage/storageAccounts/paulostorage7450",
+  "identity": {
+    "principalId": null,
+    "tenantId": null,
+    "type": "None",
+    "userAssignedIdentities": null
+  },
+  "immutableStorageWithVersioning": null,
+  "isHnsEnabled": false,
+  "isLocalUserEnabled": true,
+  "isSftpEnabled": false,
+  "isSkuConversionBlocked": null,
+  "keyCreationTime": {
+    "key1": "2025-04-19T17:32:32.961689+00:00",
+    "key2": "2025-04-19T17:32:32.961689+00:00"
+  },
+  "keyPolicy": null,
+  "kind": "StorageV2",
+  "largeFileSharesState": null,
+  "lastGeoFailoverTime": null,
+  "location": "eastus",
+  "minimumTlsVersion": "TLS1_2",
+  "name": "paulostorage7450",
+  "networkRuleSet": {
+    "bypass": "AzureServices",
+    "defaultAction": "Allow",
+    "ipRules": [],
+    "ipv6Rules": [],
+    "resourceAccessRules": [],
+    "virtualNetworkRules": []
+  },
+  "primaryEndpoints": {
+    "blob": "https://paulostorage7450.blob.core.windows.net/",
+    "dfs": "https://paulostorage7450.dfs.core.windows.net/",
+    "file": "https://paulostorage7450.file.core.windows.net/",
+    "internetEndpoints": null,
+    "microsoftEndpoints": null,
+    "queue": "https://paulostorage7450.queue.core.windows.net/",
+    "table": "https://paulostorage7450.table.core.windows.net/",
+    "web": "https://paulostorage7450.z13.web.core.windows.net/"
+  },
+  "primaryLocation": "eastus",
+  "privateEndpointConnections": [],
+  "provisioningState": "Succeeded",
+  "publicNetworkAccess": "Enabled",
+  "resourceGroup": "rg-pauloenrique-lab",
+  "routingPreference": null,
+  "sasPolicy": null,
+  "secondaryEndpoints": null,
+  "secondaryLocation": null,
+  "sku": {
+    "name": "Standard_LRS",
+    "tier": "Standard"
+  },
+  "statusOfPrimary": "available",
+  "statusOfSecondary": null,
+  "storageAccountSkuConversionStatus": null,
+  "tags": {},
+  "type": "Microsoft.Storage/storageAccounts"
+}
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab02$ az role assignment create \
+  --assignee "petorovalder@hotmail.com" \
+  --role "Storage Blob Data Contributor" \
+  --scope "/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/rg-pauloenrique-lab/providers/Microsoft.Storage/storageAccounts/paulostorage7450" \
+  --subscription "5f55b5a1-09ef-4b87-b02d-30e1a8347b3d"
+Cannot find user or service principal in graph database for 'petorovalder@hotmail.com'. If the assignee is an appId, make sure the corresponding service principal is created with 'az apauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab02$ az ad signed-in-user show --query userPrincipalName -o tsv
+petorovalder_hotmail.com#EXT#@petorovalderhotmail.onmicrosoft.com
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab02$ az role assignment create \
+  --assignee "petorovalder_hotmail.com#EXT#@petorovalderhotmail.onmicrosoft.com" \
+  --role "Storage Blob Data Contributor" \
+  --scope "/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/rg-pauloenrique-lab/providers/Microsoft.Storage/storageAccounts/paulostorage7450"
+{
+  "condition": null,
+  "conditionVersion": null,
+  "createdBy": null,
+  "createdOn": "2025-04-19T17:49:20.888289+00:00",
+  "delegatedManagedIdentityResourceId": null,
+  "description": null,
+  "id": "/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/rg-pauloenrique-lab/providers/Microsoft.Storage/storageAccounts/paulostorage7450/providers/Microsoft.Authorization/roleAssignments/fd9ff17a-c6b7-44c4-bcf8-1aa6f4dedf88",
+  "name": "fd9ff17a-c6b7-44c4-bcf8-1aa6f4dedf88",
+  "principalId": "a0f2dd3e-b724-4d55-acea-fb4a077cf08d",
+  "principalType": "User",
+  "resourceGroup": "rg-pauloenrique-lab",
+  "roleDefinitionId": "/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/providers/Microsoft.Authorization/roleDefinitions/ba92f5b4-2d11-453d-a403-e96b0029c9fe",
+  "scope": "/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/rg-pauloenrique-lab/providers/Microsoft.Storage/storageAccounts/paulostorage7450",
+  "type": "Microsoft.Authorization/roleAssignments",
+  "updatedBy": "a0f2dd3e-b724-4d55-acea-fb4a077cf08d",
+  "updatedOn": "2025-04-19T17:49:21.190288+00:00"
+}
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab02$ az role assignment list \
+  --assignee "petorovalder_hotmail.com#EXT#@petorovalderhotmail.onmicrosoft.com" \
+  --scope "/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/rg-pauloenrique-lab/providers/Microsoft.Storage/storageAccounts/paulostorage7450" \
+  --output table
+Principal                                                          Role                           Scope
+-----------------------------------------------------------------  -----------------------------  ---------------------------------------------------------------------------------------------------------------------------------------------------
+petorovalder_hotmail.com#EXT#@petorovalderhotmail.onmicrosoft.com  Storage Blob Data Contributor  /subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/rg-pauloenrique-lab/providers/Microsoft.Storage/storageAccounts/paulostorage7450
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab02$ az storage blob upload \
+  --account-name paulostorage7450 \
+  --container-name public-container \
+  --name ejemplo.txt \
+  --file ./ejemplo.txt \
+  --auth-mode login
+Finished[#############################################################]  100.0000%
+{
+  "client_request_id": "f125e27f-1d46-11f0-a59c-1002b5433de3",
+  "content_md5": "shf/h5Nu0ouciK+jCI42Lw==",
+  "date": "2025-04-19T17:51:38+00:00",
+  "encryption_key_sha256": null,
+  "encryption_scope": null,
+  "etag": "\"0x8DD7F6AD6290EF7\"",
+  "lastModified": "2025-04-19T17:51:39+00:00",
+  "request_id": "cdf58ae2-301e-0021-7353-b1ba34000000",
+  "request_server_encrypted": true,
+  "version": "2022-11-02",
+  "version_id": null
+}
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab02$ az storage blob list \
+  --account-name paulostorage7450 \
+  --container-name public-container \
+  --auth-mode login \
+  --output table
+Name         Blob Type    Blob Tier    Length    Content Type    Last Modified              Snapshot
+-----------  -----------  -----------  --------  --------------  -------------------------  ----------
+ejemplo.txt  BlockBlob    Hot          19        text/plain      2025-04-19T17:51:39+00:00
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab02$ az storage blob download \
+  --account-name paulostorage7450 \
+  --container-name public-container \
+  --name ejemplo.txt \
+  --file ejemplo-descargado.txt \
+  --auth-mode login
+Finished[#############################################################]  100.0000%
+{
+  "container": "public-container",
+  "content": "",
+  "contentMd5": null,
+  "deleted": false,
+  "encryptedMetadata": null,
+  "encryptionKeySha256": null,
+  "encryptionScope": null,
+  "hasLegalHold": null,
+  "hasVersionsOnly": null,
+  "immutabilityPolicy": {
+    "expiryTime": null,
+    "policyMode": null
+  },
+  "isAppendBlobSealed": null,
+  "isCurrentVersion": null,
+  "lastAccessedOn": null,
+  "metadata": {},
+  "name": "ejemplo.txt",
+  "objectReplicationDestinationPolicy": null,
+  "objectReplicationSourceProperties": [],
+  "properties": {
+    "appendBlobCommittedBlockCount": null,
+    "blobTier": null,
+    "blobTierChangeTime": null,
+    "blobTierInferred": null,
+    "blobType": "BlockBlob",
+    "contentLength": 19,
+    "contentRange": "bytes None-None/19",
+    "contentSettings": {
+      "cacheControl": null,
+      "contentDisposition": null,
+      "contentEncoding": null,
+      "contentLanguage": null,
+      "contentMd5": "shf/h5Nu0ouciK+jCI42Lw==",
+      "contentType": "text/plain"
+    },
+    "copy": {
+      "completionTime": null,
+      "destinationSnapshot": null,
+      "id": null,
+      "incrementalCopy": null,
+      "progress": null,
+      "source": null,
+      "status": null,
+      "statusDescription": null
+    },
+    "creationTime": "2025-04-19T17:51:39+00:00",
+    "deletedTime": null,
+    "etag": "\"0x8DD7F6AD6290EF7\"",
+    "lastModified": "2025-04-19T17:51:39+00:00",
+    "lease": {
+      "duration": null,
+      "state": "available",
+      "status": "unlocked"
+    },
+    "pageBlobSequenceNumber": null,
+    "pageRanges": null,
+    "rehydrationStatus": null,
+    "remainingRetentionDays": null,
+    "serverEncrypted": true
+  },
+  "rehydratePriority": null,
+  "requestServerEncrypted": true,
+  "snapshot": null,
+  "tagCount": null,
+  "tags": null,
+  "versionId": null
+}
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab02$ az storage blob show \
+  --account-name paulostorage7450 \
+  --container-name public-container \
+  --name ejemplo.txt \
+  --auth-mode login
+{
+  "container": "public-container",
+  "content": "",
+  "deleted": false,
+  "encryptedMetadata": null,
+  "encryptionKeySha256": null,
+  "encryptionScope": null,
+  "hasLegalHold": null,
+  "hasVersionsOnly": null,
+  "immutabilityPolicy": {
+    "expiryTime": null,
+    "policyMode": null
+  },
+  "isAppendBlobSealed": null,
+  "isCurrentVersion": null,
+  "lastAccessedOn": null,
+  "metadata": {},
+  "name": "ejemplo.txt",
+  "objectReplicationDestinationPolicy": null,
+  "objectReplicationSourceProperties": [],
+  "properties": {
+    "appendBlobCommittedBlockCount": null,
+    "blobTier": "Hot",
+    "blobTierChangeTime": null,
+    "blobTierInferred": true,
+    "blobType": "BlockBlob",
+    "contentLength": 19,
+    "contentRange": null,
+    "contentSettings": {
+      "cacheControl": null,
+      "contentDisposition": null,
+      "contentEncoding": null,
+      "contentLanguage": null,
+      "contentMd5": "shf/h5Nu0ouciK+jCI42Lw==",
+      "contentType": "text/plain"
+    },
+    "copy": {
+      "completionTime": null,
+      "destinationSnapshot": null,
+      "id": null,
+      "incrementalCopy": null,
+      "progress": null,
+      "source": null,
+      "status": null,
+      "statusDescription": null
+    },
+    "creationTime": "2025-04-19T17:51:39+00:00",
+    "deletedTime": null,
+    "etag": "\"0x8DD7F6AD6290EF7\"",
+    "lastModified": "2025-04-19T17:51:39+00:00",
+    "lease": {
+      "duration": null,
+      "state": "available",
+      "status": "unlocked"
+    },
+    "pageBlobSequenceNumber": null,
+    "pageRanges": null,
+    "rehydrationStatus": null,
+    "remainingRetentionDays": null,
+    "serverEncrypted": true
+  },
+  "rehydratePriority": null,
+  "requestServerEncrypted": true,
+  "snapshot": null,
+  "tagCount": null,
+  "tags": null,
+  "versionId": null
+}
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab02$ 
+
