@@ -1,0 +1,168 @@
+Apply complete! Resources: 8 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+ssh_connection_command = "ssh adminuser@"
+vm_public_ip = ""
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab05$ ssh adminuser@74.235.216.149
+The authenticity of host '74.235.216.149 (74.235.216.149)' can't be established.
+ED25519 key fingerprint is SHA256:2cdPXPdkC9InFZMOoBy6v51cRjjJ9y+rFobnnkjCoyw.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '74.235.216.149' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 18.04.6 LTS (GNU/Linux 5.4.0-1109-azure x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Wed Apr 23 02:02:27 UTC 2025
+
+  System load:  0.22              Processes:           127
+  Usage of /:   4.5% of 28.89GB   Users logged in:     0
+  Memory usage: 5%                IP address for eth0: 10.0.2.4
+  Swap usage:   0%
+
+Expanded Security Maintenance for Infrastructure is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Infra to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+adminuser@lab-vm:~$ sudo date
+Wed Apr 23 02:02:36 UTC 2025
+adminuser@lab-vm:~$ exit
+logout
+Connection to 74.235.216.149 closed.
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab05$ ssh-keygen -t rsa -b 4096
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/pauloenrique/.ssh/id_rsa): 
+/home/pauloenrique/.ssh/id_rsa already exists.
+Overwrite (y/n)? n
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab05$ ssh adminuser@74.235.216.149
+Welcome to Ubuntu 18.04.6 LTS (GNU/Linux 5.4.0-1109-azure x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Wed Apr 23 02:04:08 UTC 2025
+
+  System load:  0.06              Processes:           127
+  Usage of /:   4.6% of 28.89GB   Users logged in:     0
+  Memory usage: 5%                IP address for eth0: 10.0.2.4
+  Swap usage:   0%
+
+
+Expanded Security Maintenance for Infrastructure is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Infra to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+New release '20.04.6 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+
+Last login: Wed Apr 23 02:02:29 2025 from 191.92.22.183
+adminuser@lab-vm:~$ sudo uptime
+ 02:04:12 up 3 min,  1 user,  load average: 0.05, 0.08, 0.03
+adminuser@lab-vm:~$ ^C
+adminuser@lab-vm:~$ exit
+logout
+Connection to 74.235.216.149 closed.
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab05$ ssh adminuser@74.235.216.149
+Welcome to Ubuntu 18.04.6 LTS (GNU/Linux 5.4.0-1109-azure x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Wed Apr 23 02:04:21 UTC 2025
+
+  System load:  0.05              Processes:           127
+  Usage of /:   4.6% of 28.89GB   Users logged in:     0
+  Memory usage: 5%                IP address for eth0: 10.0.2.4
+  Swap usage:   0%
+
+
+Expanded Security Maintenance for Infrastructure is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Infra to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+New release '20.04.6 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+
+Last login: Wed Apr 23 02:04:09 2025 from 191.92.22.183
+adminuser@lab-vm:~$ top
+
+top - 02:04:23 up 3 min,  1 user,  load average: 0.04, 0.08, 0.03
+Tasks: 126 total,   1 running,  57 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  2.9 us,  2.3 sy,  0.0 ni, 91.8 id,  2.8 wa,  0.0 hi,  0.2 si,  0.0 st
+KiB Mem :  4026544 total,  3502344 free,   164560 used,   359640 buff/cache
+KiB Swap:        0 total,        0 free,        0 used.  3630904 avail Mem 
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND                                                                                                             
+    1 root      20   0  159912   9212   6692 S   0.0  0.2   0:03.45 systemd                                                                                                             
+    2 root      20   0       0      0      0 S   0.0  0.0   0:00.00 kthreadd                                                                                                            
+    3 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 rcu_gp                                                                                                              
+    4 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 rcu_par_gp                                                                                                          
+    5 root      20   0       0      0      0 I   0.0  0.0   0:00.00 kworker/0:0-eve                                                                                                     
+    6 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kworker/0:0H-kb                                                                                                     
+    7 root      20   0       0      0      0 I   0.0  0.0   0:00.03 kworker/u4:0-ev                                                                                                     
+    8 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 mm_percpu_wq                                                                                                        
+    9 root      20   0       0      0      0 S   0.0  0.0   0:00.02 ksoftirqd/0                                                                                                         
+   10 root      20   0       0      0      0 I   0.0  0.0   0:00.06 rcu_sched                                                                                                           
+   11 root      rt   0       0      0      0 S   0.0  0.0   0:00.00 migration/0                                                                                                         
+   12 root      20   0       0      0      0 I   0.0  0.0   0:00.10 kworker/0:1-cgr                                                                                                     
+   13 root      20   0       0      0      0 S   0.0  0.0   0:00.00 cpuhp/0                                                                                                             
+   14 root      20   0       0      0      0 S   0.0  0.0   0:00.00 cpuhp/1                                                                                                             
+   15 root      rt   0       0      0      0 S   0.0  0.0   0:00.72 migration/1                                                                                                         
+   16 root      20   0       0      0      0 S   0.0  0.0   0:00.04 ksoftirqd/1                                                                                                         
+   17 root      20   0       0      0      0 I   0.0  0.0   0:00.02 kworker/1:0-eve                                                                                                     
+   18 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kworker/1:0H-kb                                                                                                     
+   19 root      20   0       0      0      0 S   0.0  0.0   0:00.00 kdevtmpfs                                                                                                           
+   20 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 netns                                                                                                               
+   21 root      20   0       0      0      0 S   0.0  0.0   0:00.00 rcu_tasks_kthre                                                                                                     
+   22 root      20   0       0      0      0 S   0.0  0.0   0:00.00 kauditd                                                                                                             
+   23 root      20   0       0      0      0 S   0.0  0.0   0:00.00 khungtaskd                                                                                                          
+   24 root      20   0       0      0      0 S   0.0  0.0   0:00.00 oom_reaper                                                                                                          
+   25 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 writeback                                                                                                           
+   26 root      20   0       0      0      0 S   0.0  0.0   0:00.00 kcompactd0                                                                                                          
+   27 root      25   5       0      0      0 S   0.0  0.0   0:00.00 ksmd                                                                                                                
+   28 root      39  19       0      0      0 S   0.0  0.0   0:00.00 khugepaged                                                                                                          
+   74 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kintegrityd                                                                                                         
+   75 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kblockd                                                                                                             
+   76 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 blkcg_punt_bio                                                                                                      
+   77 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 tpm_dev_wq                                                                                                          
+   78 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 ata_sff                                                                                                             
+   79 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 md                                                                                                                  
+   80 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 edac-poller                                                                                                         
+   81 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 hv_vmbus_con                                                                                                        
+   82 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 hv_pri_chan                                                                                                         
+   83 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 hv_sub_chan                                                                                                         
+adminuser@lab-vm:~$ uname -a
+Linux lab-vm 5.4.0-1109-azure #115~18.04.1-Ubuntu SMP Mon May 22 20:06:37 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux
+adminuser@lab-vm:~$ exit
+logout
+Connection to 74.235.216.149 closed.
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab05$ 
+
