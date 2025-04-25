@@ -1,0 +1,16 @@
+---
+- name: Instalar y configurar NGINX
+  hosts: localhost
+  become: true
+  tasks:
+    - name: Instalar NGINX
+      apt:
+        name: nginx
+        state: present
+        update_cache: true
+
+    - name: Asegurarse que NGINX esté en ejecución
+      service:
+        name: nginx
+        state: started
+        enabled: true
