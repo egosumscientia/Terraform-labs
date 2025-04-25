@@ -7,7 +7,6 @@ cat > .gitignore <<EOF
 terraform.tfvars
 
 # Archivos temporales/documentos
-*.odt
 *.tmp
 *.swp
 EOF
