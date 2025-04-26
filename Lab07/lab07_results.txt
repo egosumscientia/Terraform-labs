@@ -1,0 +1,739 @@
+  # azurerm_public_ip.lb_public_ip will be created
+  + resource "azurerm_public_ip" "lb_public_ip" {
+      + allocation_method       = "Static"
+      + ddos_protection_mode    = "VirtualNetworkInherited"
+      + fqdn                    = (known after apply)
+      + id                      = (known after apply)
+      + idle_timeout_in_minutes = 4
+      + ip_address              = (known after apply)
+      + ip_version              = "IPv4"
+      + location                = "eastus"
+      + name                    = "lab-lb-ip"
+      + resource_group_name     = "lab-net-rg"
+      + sku                     = "Standard"
+      + sku_tier                = "Regional"
+    }
+
+Plan: 9 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  ~ load_balancer_ip = "172.190.46.88" -> (known after apply)
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if
+you run "terraform apply" now.
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab07$ terraform apply -auto-approve
+azurerm_resource_group.main: Refreshing state... [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg]
+azurerm_virtual_network.vnet: Refreshing state... [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/virtualNetworks/lab-vnet]
+azurerm_public_ip.lb_public_ip: Refreshing state... [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/publicIPAddresses/lab-lb-ip]
+azurerm_public_ip.vm2_public_ip: Refreshing state... [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/publicIPAddresses/lab-vm2-ip]
+azurerm_network_security_group.nsg: Refreshing state... [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/networkSecurityGroups/lab-nsg]
+azurerm_public_ip.vm_public_ip: Refreshing state... [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/publicIPAddresses/lab-vm1-ip]
+azurerm_network_security_rule.allow_ssh: Refreshing state... [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/networkSecurityGroups/lab-nsg/securityRules/allow-ssh]
+azurerm_subnet.subnet1: Refreshing state... [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/virtualNetworks/lab-vnet/subnets/subnet-public]
+azurerm_network_security_rule.allow_http: Refreshing state... [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/networkSecurityGroups/lab-nsg/securityRules/allow-http]
+azurerm_lb.lab_lb: Refreshing state... [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/loadBalancers/lab-loadbalancer]
+azurerm_subnet_network_security_group_association.subnet_nsg: Refreshing state... [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/virtualNetworks/lab-vnet/subnets/subnet-public]
+azurerm_network_interface.vm_nic: Refreshing state... [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/networkInterfaces/lab-vm1-nic]
+azurerm_network_interface.vm2_nic: Refreshing state... [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/networkInterfaces/lab-vm2-nic]
+azurerm_lb_backend_address_pool.lb_backend_pool: Refreshing state... [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/loadBalancers/lab-loadbalancer/backendAddressPools/backend-pool]
+azurerm_lb_probe.http_probe: Refreshing state... [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/loadBalancers/lab-loadbalancer/probes/http-probe]
+azurerm_network_interface_security_group_association.nic_nsg_association: Refreshing state... [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/networkInterfaces/lab-vm1-nic|/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/networkSecurityGroups/lab-nsg]
+azurerm_network_interface_security_group_association.vm2_nic_nsg: Refreshing state... [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/networkInterfaces/lab-vm2-nic|/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/networkSecurityGroups/lab-nsg]
+azurerm_network_interface_backend_address_pool_association.vm2_backend: Refreshing state... [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/networkInterfaces/lab-vm2-nic/ipConfigurations/internal|/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/loadBalancers/lab-loadbalancer/backendAddressPools/backend-pool]
+azurerm_network_interface_backend_address_pool_association.vm1_backend: Refreshing state... [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/networkInterfaces/lab-vm1-nic/ipConfigurations/internal|/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/loadBalancers/lab-loadbalancer/backendAddressPools/backend-pool]
+azurerm_lb_rule.http_rule: Refreshing state... [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/loadBalancers/lab-loadbalancer/loadBalancingRules/http-rule]
+
+Note: Objects have changed outside of Terraform
+
+Terraform detected the following changes made outside of Terraform since the last "terraform apply" which may have affected this plan:
+
+  # azurerm_lb.lab_lb has been deleted
+  - resource "azurerm_lb" "lab_lb" {
+      - id                   = "/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/loadBalancers/lab-loadbalancer" -> null
+        name                 = "lab-loadbalancer"
+        # (7 unchanged attributes hidden)
+
+        # (1 unchanged block hidden)
+    }
+
+  # azurerm_lb_backend_address_pool.lb_backend_pool has been deleted
+  - resource "azurerm_lb_backend_address_pool" "lb_backend_pool" {
+      - id                        = "/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/loadBalancers/lab-loadbalancer/backendAddressPools/backend-pool" -> null
+        name                      = "backend-pool"
+        # (7 unchanged attributes hidden)
+    }
+
+  # azurerm_lb_probe.http_probe has been deleted
+  - resource "azurerm_lb_probe" "http_probe" {
+      - id                  = "/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/loadBalancers/lab-loadbalancer/probes/http-probe" -> null
+        name                = "http-probe"
+        # (8 unchanged attributes hidden)
+    }
+
+  # azurerm_network_interface.vm2_nic has been deleted
+  - resource "azurerm_network_interface" "vm2_nic" {
+      - id                             = "/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/networkInterfaces/lab-vm2-nic" -> null
+        name                           = "lab-vm2-nic"
+        # (17 unchanged attributes hidden)
+
+        # (1 unchanged block hidden)
+    }
+
+  # azurerm_network_interface.vm_nic has been deleted
+  - resource "azurerm_network_interface" "vm_nic" {
+      - id                             = "/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/networkInterfaces/lab-vm1-nic" -> null
+        name                           = "lab-vm1-nic"
+        # (17 unchanged attributes hidden)
+
+        # (1 unchanged block hidden)
+    }
+
+  # azurerm_network_security_group.nsg has been deleted
+  - resource "azurerm_network_security_group" "nsg" {
+      - id                  = "/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/networkSecurityGroups/lab-nsg" -> null
+      - name                = "lab-nsg" -> null
+        # (3 unchanged attributes hidden)
+    }
+
+  # azurerm_public_ip.lb_public_ip has been deleted
+  - resource "azurerm_public_ip" "lb_public_ip" {
+      - id                      = "/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/publicIPAddresses/lab-lb-ip" -> null
+      - ip_address              = "172.190.46.88" -> null
+        name                    = "lab-lb-ip"
+        # (9 unchanged attributes hidden)
+    }
+
+  # azurerm_public_ip.vm2_public_ip has been deleted
+  - resource "azurerm_public_ip" "vm2_public_ip" {
+      - id                      = "/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/publicIPAddresses/lab-vm2-ip" -> null
+      - ip_address              = "172.203.132.51" -> null
+        name                    = "lab-vm2-ip"
+        # (9 unchanged attributes hidden)
+    }
+
+  # azurerm_public_ip.vm_public_ip has been deleted
+  - resource "azurerm_public_ip" "vm_public_ip" {
+      - id                      = "/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/publicIPAddresses/lab-vm1-ip" -> null
+      - ip_address              = "172.190.223.24" -> null
+        name                    = "lab-vm1-ip"
+        # (9 unchanged attributes hidden)
+    }
+
+  # azurerm_subnet.subnet1 has been deleted
+  - resource "azurerm_subnet" "subnet1" {
+      - id                                             = "/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/virtualNetworks/lab-vnet/subnets/subnet-public" -> null
+        name                                           = "subnet-public"
+        # (9 unchanged attributes hidden)
+    }
+
+  # azurerm_virtual_network.vnet has been deleted
+  - resource "azurerm_virtual_network" "vnet" {
+        id                      = "/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/virtualNetworks/lab-vnet"
+      - name                    = "lab-vnet" -> null
+        # (9 unchanged attributes hidden)
+    }
+
+
+Unless you have made equivalent changes to your configuration, or ignored the relevant attributes using ignore_changes, the following plan may include actions to undo or respond to
+these changes.
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # azurerm_lb.lab_lb will be created
+  + resource "azurerm_lb" "lab_lb" {
+      + id                   = (known after apply)
+      + location             = "eastus"
+      + name                 = "lab-loadbalancer"
+      + private_ip_address   = (known after apply)
+      + private_ip_addresses = (known after apply)
+      + resource_group_name  = "lab-net-rg"
+      + sku                  = "Standard"
+      + sku_tier             = "Regional"
+
+      + frontend_ip_configuration {
+          + gateway_load_balancer_frontend_ip_configuration_id = (known after apply)
+          + id                                                 = (known after apply)
+          + inbound_nat_rules                                  = (known after apply)
+          + load_balancer_rules                                = (known after apply)
+          + name                                               = "PublicIPAddress"
+          + outbound_rules                                     = (known after apply)
+          + private_ip_address                                 = (known after apply)
+          + private_ip_address_allocation                      = (known after apply)
+          + private_ip_address_version                         = (known after apply)
+          + public_ip_address_id                               = (known after apply)
+          + public_ip_prefix_id                                = (known after apply)
+          + subnet_id                                          = (known after apply)
+        }
+    }
+
+  # azurerm_lb_backend_address_pool.lb_backend_pool will be created
+  + resource "azurerm_lb_backend_address_pool" "lb_backend_pool" {
+      + backend_ip_configurations = (known after apply)
+      + id                        = (known after apply)
+      + inbound_nat_rules         = (known after apply)
+      + load_balancing_rules      = (known after apply)
+      + loadbalancer_id           = (known after apply)
+      + name                      = "backend-pool"
+      + outbound_rules            = (known after apply)
+    }
+
+  # azurerm_lb_probe.http_probe will be created
+  + resource "azurerm_lb_probe" "http_probe" {
+      + id                  = (known after apply)
+      + interval_in_seconds = 5
+      + load_balancer_rules = (known after apply)
+      + loadbalancer_id     = (known after apply)
+      + name                = "http-probe"
+      + number_of_probes    = 2
+      + port                = 80
+      + probe_threshold     = 1
+      + protocol            = "Http"
+      + request_path        = "/"
+    }
+
+  # azurerm_lb_rule.http_rule will be created
+  + resource "azurerm_lb_rule" "http_rule" {
+      + backend_address_pool_ids       = (known after apply)
+      + backend_port                   = 80
+      + disable_outbound_snat          = false
+      + enable_floating_ip             = false
+      + frontend_ip_configuration_id   = (known after apply)
+      + frontend_ip_configuration_name = "PublicIPAddress"
+      + frontend_port                  = 80
+      + id                             = (known after apply)
+      + idle_timeout_in_minutes        = (known after apply)
+      + load_distribution              = (known after apply)
+      + loadbalancer_id                = (known after apply)
+      + name                           = "http-rule"
+      + probe_id                       = (known after apply)
+      + protocol                       = "Tcp"
+    }
+
+  # azurerm_linux_virtual_machine.vm will be created
+  + resource "azurerm_linux_virtual_machine" "vm" {
+      + admin_username                                         = "azureuser"
+      + allow_extension_operations                             = true
+      + bypass_platform_safety_checks_on_user_schedule_enabled = false
+      + computer_name                                          = (known after apply)
+      + disable_password_authentication                        = true
+      + disk_controller_type                                   = (known after apply)
+      + extensions_time_budget                                 = "PT1H30M"
+      + id                                                     = (known after apply)
+      + location                                               = "eastus"
+      + max_bid_price                                          = -1
+      + name                                                   = "lab-vm1"
+      + network_interface_ids                                  = (known after apply)
+      + patch_assessment_mode                                  = "ImageDefault"
+      + patch_mode                                             = "ImageDefault"
+      + platform_fault_domain                                  = -1
+      + priority                                               = "Regular"
+      + private_ip_address                                     = (known after apply)
+      + private_ip_addresses                                   = (known after apply)
+      + provision_vm_agent                                     = true
+      + public_ip_address                                      = (known after apply)
+      + public_ip_addresses                                    = (known after apply)
+      + resource_group_name                                    = "lab-net-rg"
+      + size                                                   = "Standard_B1s"
+      + virtual_machine_id                                     = (known after apply)
+      + vm_agent_platform_updates_enabled                      = false
+
+      + admin_ssh_key {
+          + public_key = <<-EOT
+                ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDHWxXbOHJPS4MfRM0nd0phOT4FjqA44Ej5Cjya/DLy/Tp2LvO59hqfRJjEDd4zHG//vO/a3istk8kV9eK7tuHVVnmaHD3TGfdzwKJ+78mwVxQ+V+xHmYc8JtFBJpTjBWDN+6P6BsC51IxXns6l7GWERGFBFC9sS2/H376dmGCZt8fx00LKImefvXL/tJGxMz5dxhVkgVIc7NuiqnwbBB5mYJEvWvpGB9at+9G2ivNbHMVZO1sqPirw737/LE+KFquorYDnKou0oWxSaOq4p+pOLxw7X67Ib8Dy4dxm44ChhAwMa5WBBmqvoHpPlqVk3mHrj9S5eLTsI3ZZCvhKzvCV53z6QVCA+hIeige2AMXDN4xZ3Eq1mJz9ktslQZ+Ofz5YChNYqIRqthEpnZOY5Y0Zewcaemp3S3cfxfoT26sHX0QprURJcLWL1m0crBrT2aZTc1SnnIkp+RIUXMuKcTwLcr3KKNlJOjEBQ84qmdq2JV8S1+V5+UE8S3a6P0JHKEKsDzPQKNAvzkECK+ikYNP334Sse+HANNs5eiJDXchGpxShskm9UGVq1fo2T6P9w8FAWaCGm1spbmiOu40K2LeiKyggKACki59at0Jdu3eYDTd/YmUE8Y0XCGFyzh1sVTvMPYvoyJqBJi3T7sg7q/RoPbD4wmEUeiyvp8y+PuaBUQ== petorovalder@hotmail.com
+            EOT
+          + username   = "azureuser"
+        }
+
+      + os_disk {
+          + caching                   = "ReadWrite"
+          + disk_size_gb              = (known after apply)
+          + name                      = "lab-vm1-osdisk"
+          + storage_account_type      = "Standard_LRS"
+          + write_accelerator_enabled = false
+        }
+
+      + source_image_reference {
+          + offer     = "0001-com-ubuntu-server-jammy"
+          + publisher = "Canonical"
+          + sku       = "22_04-lts"
+          + version   = "latest"
+        }
+
+      + termination_notification (known after apply)
+    }
+
+  # azurerm_linux_virtual_machine.vm2 will be created
+  + resource "azurerm_linux_virtual_machine" "vm2" {
+      + admin_username                                         = "azureuser"
+      + allow_extension_operations                             = true
+      + bypass_platform_safety_checks_on_user_schedule_enabled = false
+      + computer_name                                          = (known after apply)
+      + disable_password_authentication                        = true
+      + disk_controller_type                                   = (known after apply)
+      + extensions_time_budget                                 = "PT1H30M"
+      + id                                                     = (known after apply)
+      + location                                               = "eastus"
+      + max_bid_price                                          = -1
+      + name                                                   = "lab-vm2"
+      + network_interface_ids                                  = (known after apply)
+      + patch_assessment_mode                                  = "ImageDefault"
+      + patch_mode                                             = "ImageDefault"
+      + platform_fault_domain                                  = -1
+      + priority                                               = "Regular"
+      + private_ip_address                                     = (known after apply)
+      + private_ip_addresses                                   = (known after apply)
+      + provision_vm_agent                                     = true
+      + public_ip_address                                      = (known after apply)
+      + public_ip_addresses                                    = (known after apply)
+      + resource_group_name                                    = "lab-net-rg"
+      + size                                                   = "Standard_B1s"
+      + virtual_machine_id                                     = (known after apply)
+      + vm_agent_platform_updates_enabled                      = false
+
+      + admin_ssh_key {
+          + public_key = <<-EOT
+                ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDHWxXbOHJPS4MfRM0nd0phOT4FjqA44Ej5Cjya/DLy/Tp2LvO59hqfRJjEDd4zHG//vO/a3istk8kV9eK7tuHVVnmaHD3TGfdzwKJ+78mwVxQ+V+xHmYc8JtFBJpTjBWDN+6P6BsC51IxXns6l7GWERGFBFC9sS2/H376dmGCZt8fx00LKImefvXL/tJGxMz5dxhVkgVIc7NuiqnwbBB5mYJEvWvpGB9at+9G2ivNbHMVZO1sqPirw737/LE+KFquorYDnKou0oWxSaOq4p+pOLxw7X67Ib8Dy4dxm44ChhAwMa5WBBmqvoHpPlqVk3mHrj9S5eLTsI3ZZCvhKzvCV53z6QVCA+hIeige2AMXDN4xZ3Eq1mJz9ktslQZ+Ofz5YChNYqIRqthEpnZOY5Y0Zewcaemp3S3cfxfoT26sHX0QprURJcLWL1m0crBrT2aZTc1SnnIkp+RIUXMuKcTwLcr3KKNlJOjEBQ84qmdq2JV8S1+V5+UE8S3a6P0JHKEKsDzPQKNAvzkECK+ikYNP334Sse+HANNs5eiJDXchGpxShskm9UGVq1fo2T6P9w8FAWaCGm1spbmiOu40K2LeiKyggKACki59at0Jdu3eYDTd/YmUE8Y0XCGFyzh1sVTvMPYvoyJqBJi3T7sg7q/RoPbD4wmEUeiyvp8y+PuaBUQ== petorovalder@hotmail.com
+            EOT
+          + username   = "azureuser"
+        }
+
+      + os_disk {
+          + caching                   = "ReadWrite"
+          + disk_size_gb              = (known after apply)
+          + name                      = "lab-vm2-osdisk"
+          + storage_account_type      = "Standard_LRS"
+          + write_accelerator_enabled = false
+        }
+
+      + source_image_reference {
+          + offer     = "0001-com-ubuntu-server-jammy"
+          + publisher = "Canonical"
+          + sku       = "22_04-lts"
+          + version   = "latest"
+        }
+
+      + termination_notification (known after apply)
+    }
+
+  # azurerm_network_interface.vm2_nic will be created
+  + resource "azurerm_network_interface" "vm2_nic" {
+      + accelerated_networking_enabled = (known after apply)
+      + applied_dns_servers            = (known after apply)
+      + dns_servers                    = (known after apply)
+      + enable_accelerated_networking  = (known after apply)
+      + enable_ip_forwarding           = (known after apply)
+      + id                             = (known after apply)
+      + internal_domain_name_suffix    = (known after apply)
+      + ip_forwarding_enabled          = (known after apply)
+      + location                       = "eastus"
+      + mac_address                    = (known after apply)
+      + name                           = "lab-vm2-nic"
+      + private_ip_address             = (known after apply)
+      + private_ip_addresses           = (known after apply)
+      + resource_group_name            = "lab-net-rg"
+      + virtual_machine_id             = (known after apply)
+
+      + ip_configuration {
+          + gateway_load_balancer_frontend_ip_configuration_id = (known after apply)
+          + name                                               = "internal"
+          + primary                                            = (known after apply)
+          + private_ip_address                                 = (known after apply)
+          + private_ip_address_allocation                      = "Dynamic"
+          + private_ip_address_version                         = "IPv4"
+          + public_ip_address_id                               = (known after apply)
+          + subnet_id                                          = (known after apply)
+        }
+    }
+
+  # azurerm_network_interface.vm_nic will be created
+  + resource "azurerm_network_interface" "vm_nic" {
+      + accelerated_networking_enabled = (known after apply)
+      + applied_dns_servers            = (known after apply)
+      + dns_servers                    = (known after apply)
+      + enable_accelerated_networking  = (known after apply)
+      + enable_ip_forwarding           = (known after apply)
+      + id                             = (known after apply)
+      + internal_domain_name_suffix    = (known after apply)
+      + ip_forwarding_enabled          = (known after apply)
+      + location                       = "eastus"
+      + mac_address                    = (known after apply)
+      + name                           = "lab-vm1-nic"
+      + private_ip_address             = (known after apply)
+      + private_ip_addresses           = (known after apply)
+      + resource_group_name            = "lab-net-rg"
+      + virtual_machine_id             = (known after apply)
+
+      + ip_configuration {
+          + gateway_load_balancer_frontend_ip_configuration_id = (known after apply)
+          + name                                               = "internal"
+          + primary                                            = (known after apply)
+          + private_ip_address                                 = (known after apply)
+          + private_ip_address_allocation                      = "Dynamic"
+          + private_ip_address_version                         = "IPv4"
+          + public_ip_address_id                               = (known after apply)
+          + subnet_id                                          = (known after apply)
+        }
+    }
+
+  # azurerm_network_interface_backend_address_pool_association.vm1_backend will be created
+  + resource "azurerm_network_interface_backend_address_pool_association" "vm1_backend" {
+      + backend_address_pool_id = (known after apply)
+      + id                      = (known after apply)
+      + ip_configuration_name   = "internal"
+      + network_interface_id    = (known after apply)
+    }
+
+  # azurerm_network_interface_backend_address_pool_association.vm2_backend will be created
+  + resource "azurerm_network_interface_backend_address_pool_association" "vm2_backend" {
+      + backend_address_pool_id = (known after apply)
+      + id                      = (known after apply)
+      + ip_configuration_name   = "internal"
+      + network_interface_id    = (known after apply)
+    }
+
+  # azurerm_network_interface_security_group_association.nic_nsg_association will be created
+  + resource "azurerm_network_interface_security_group_association" "nic_nsg_association" {
+      + id                        = (known after apply)
+      + network_interface_id      = (known after apply)
+      + network_security_group_id = (known after apply)
+    }
+
+  # azurerm_network_interface_security_group_association.vm2_nic_nsg will be created
+  + resource "azurerm_network_interface_security_group_association" "vm2_nic_nsg" {
+      + id                        = (known after apply)
+      + network_interface_id      = (known after apply)
+      + network_security_group_id = (known after apply)
+    }
+
+  # azurerm_network_security_group.nsg will be created
+  + resource "azurerm_network_security_group" "nsg" {
+      + id                  = (known after apply)
+      + location            = "eastus"
+      + name                = "lab-nsg"
+      + resource_group_name = "lab-net-rg"
+      + security_rule       = (known after apply)
+    }
+
+  # azurerm_network_security_rule.allow_http will be created
+  + resource "azurerm_network_security_rule" "allow_http" {
+      + access                      = "Allow"
+      + destination_address_prefix  = "*"
+      + destination_port_range      = "80"
+      + direction                   = "Inbound"
+      + id                          = (known after apply)
+      + name                        = "allow-http"
+      + network_security_group_name = "lab-nsg"
+      + priority                    = 100
+      + protocol                    = "Tcp"
+      + resource_group_name         = "lab-net-rg"
+      + source_address_prefix       = "*"
+      + source_port_range           = "*"
+    }
+
+  # azurerm_network_security_rule.allow_ssh will be created
+  + resource "azurerm_network_security_rule" "allow_ssh" {
+      + access                      = "Allow"
+      + destination_address_prefix  = "*"
+      + destination_port_range      = "22"
+      + direction                   = "Inbound"
+      + id                          = (known after apply)
+      + name                        = "allow-ssh"
+      + network_security_group_name = "lab-nsg"
+      + priority                    = 110
+      + protocol                    = "Tcp"
+      + resource_group_name         = "lab-net-rg"
+      + source_address_prefix       = "*"
+      + source_port_range           = "*"
+    }
+
+  # azurerm_public_ip.lb_public_ip will be created
+  + resource "azurerm_public_ip" "lb_public_ip" {
+      + allocation_method       = "Static"
+      + ddos_protection_mode    = "VirtualNetworkInherited"
+      + fqdn                    = (known after apply)
+      + id                      = (known after apply)
+      + idle_timeout_in_minutes = 4
+      + ip_address              = (known after apply)
+      + ip_version              = "IPv4"
+      + location                = "eastus"
+      + name                    = "lab-lb-ip"
+      + resource_group_name     = "lab-net-rg"
+      + sku                     = "Standard"
+      + sku_tier                = "Regional"
+    }
+
+  # azurerm_public_ip.vm2_public_ip will be created
+  + resource "azurerm_public_ip" "vm2_public_ip" {
+      + allocation_method       = "Static"
+      + ddos_protection_mode    = "VirtualNetworkInherited"
+      + fqdn                    = (known after apply)
+      + id                      = (known after apply)
+      + idle_timeout_in_minutes = 4
+      + ip_address              = (known after apply)
+      + ip_version              = "IPv4"
+      + location                = "eastus"
+      + name                    = "lab-vm2-ip"
+      + resource_group_name     = "lab-net-rg"
+      + sku                     = "Standard"
+      + sku_tier                = "Regional"
+    }
+
+  # azurerm_public_ip.vm_public_ip will be created
+  + resource "azurerm_public_ip" "vm_public_ip" {
+      + allocation_method       = "Static"
+      + ddos_protection_mode    = "VirtualNetworkInherited"
+      + fqdn                    = (known after apply)
+      + id                      = (known after apply)
+      + idle_timeout_in_minutes = 4
+      + ip_address              = (known after apply)
+      + ip_version              = "IPv4"
+      + location                = "eastus"
+      + name                    = "lab-vm1-ip"
+      + resource_group_name     = "lab-net-rg"
+      + sku                     = "Standard"
+      + sku_tier                = "Regional"
+    }
+
+  # azurerm_subnet.subnet1 will be created
+  + resource "azurerm_subnet" "subnet1" {
+      + address_prefixes                               = [
+          + "10.0.1.0/24",
+        ]
+      + default_outbound_access_enabled                = true
+      + enforce_private_link_endpoint_network_policies = (known after apply)
+      + enforce_private_link_service_network_policies  = (known after apply)
+      + id                                             = (known after apply)
+      + name                                           = "subnet-public"
+      + private_endpoint_network_policies              = (known after apply)
+      + private_endpoint_network_policies_enabled      = (known after apply)
+      + private_link_service_network_policies_enabled  = (known after apply)
+      + resource_group_name                            = "lab-net-rg"
+      + virtual_network_name                           = "lab-vnet"
+    }
+
+  # azurerm_subnet_network_security_group_association.subnet_nsg will be created
+  + resource "azurerm_subnet_network_security_group_association" "subnet_nsg" {
+      + id                        = (known after apply)
+      + network_security_group_id = (known after apply)
+      + subnet_id                 = (known after apply)
+    }
+
+  # azurerm_virtual_network.vnet will be created
+  + resource "azurerm_virtual_network" "vnet" {
+      + address_space       = [
+          + "10.0.0.0/16",
+        ]
+      + dns_servers         = (known after apply)
+      + guid                = (known after apply)
+      + id                  = (known after apply)
+      + location            = "eastus"
+      + name                = "lab-vnet"
+      + resource_group_name = "lab-net-rg"
+      + subnet              = (known after apply)
+    }
+
+Plan: 21 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  ~ load_balancer_ip = "172.190.46.88" -> (known after apply)
+  ~ vm1_public_ip    = "172.190.223.24" -> (known after apply)
+  ~ vm2_public_ip    = "172.203.132.51" -> (known after apply)
+azurerm_network_security_group.nsg: Creating...
+azurerm_virtual_network.vnet: Creating...
+azurerm_public_ip.vm2_public_ip: Creating...
+azurerm_public_ip.lb_public_ip: Creating...
+azurerm_public_ip.vm_public_ip: Creating...
+azurerm_public_ip.vm2_public_ip: Creation complete after 5s [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/publicIPAddresses/lab-vm2-ip]
+azurerm_public_ip.lb_public_ip: Creation complete after 6s [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/publicIPAddresses/lab-lb-ip]
+azurerm_lb.lab_lb: Creating...
+azurerm_public_ip.vm_public_ip: Creation complete after 6s [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/publicIPAddresses/lab-vm1-ip]
+azurerm_network_security_group.nsg: Creation complete after 6s [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/networkSecurityGroups/lab-nsg]
+azurerm_network_security_rule.allow_ssh: Creating...
+azurerm_network_security_rule.allow_http: Creating...
+azurerm_virtual_network.vnet: Creation complete after 9s [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/virtualNetworks/lab-vnet]
+azurerm_subnet.subnet1: Creating...
+azurerm_network_security_rule.allow_ssh: Creation complete after 4s [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/networkSecurityGroups/lab-nsg/securityRules/allow-ssh]
+azurerm_network_security_rule.allow_http: Creation complete after 5s [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/networkSecurityGroups/lab-nsg/securityRules/allow-http]
+azurerm_lb.lab_lb: Still creating... [10s elapsed]
+azurerm_subnet.subnet1: Creation complete after 7s [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/virtualNetworks/lab-vnet/subnets/subnet-public]
+azurerm_subnet_network_security_group_association.subnet_nsg: Creating...
+azurerm_network_interface.vm2_nic: Creating...
+azurerm_network_interface.vm_nic: Creating...
+azurerm_lb.lab_lb: Creation complete after 14s [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/loadBalancers/lab-loadbalancer]
+azurerm_lb_backend_address_pool.lb_backend_pool: Creating...
+azurerm_lb_probe.http_probe: Creating...
+azurerm_subnet_network_security_group_association.subnet_nsg: Creation complete after 8s [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/virtualNetworks/lab-vnet/subnets/subnet-public]
+azurerm_network_interface.vm_nic: Still creating... [10s elapsed]
+azurerm_network_interface.vm2_nic: Still creating... [10s elapsed]
+azurerm_network_interface.vm_nic: Creation complete after 14s [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/networkInterfaces/lab-vm1-nic]
+azurerm_network_interface_security_group_association.nic_nsg_association: Creating...
+azurerm_linux_virtual_machine.vm: Creating...
+azurerm_lb_probe.http_probe: Still creating... [10s elapsed]
+azurerm_lb_backend_address_pool.lb_backend_pool: Still creating... [10s elapsed]
+azurerm_network_interface.vm2_nic: Creation complete after 19s [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/networkInterfaces/lab-vm2-nic]
+azurerm_network_interface_security_group_association.vm2_nic_nsg: Creating...
+azurerm_linux_virtual_machine.vm2: Creating...
+azurerm_lb_probe.http_probe: Creation complete after 15s [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/loadBalancers/lab-loadbalancer/probes/http-probe]
+azurerm_network_interface_security_group_association.nic_nsg_association: Creation complete after 6s [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/networkInterfaces/lab-vm1-nic|/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/networkSecurityGroups/lab-nsg]
+azurerm_lb_backend_address_pool.lb_backend_pool: Creation complete after 20s [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/loadBalancers/lab-loadbalancer/backendAddressPools/backend-pool]
+azurerm_network_interface_backend_address_pool_association.vm2_backend: Creating...
+azurerm_lb_rule.http_rule: Creating...
+azurerm_network_interface_backend_address_pool_association.vm1_backend: Creating...
+azurerm_linux_virtual_machine.vm: Still creating... [10s elapsed]
+azurerm_network_interface_security_group_association.vm2_nic_nsg: Creation complete after 8s [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/networkInterfaces/lab-vm2-nic|/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/networkSecurityGroups/lab-nsg]
+azurerm_linux_virtual_machine.vm2: Still creating... [10s elapsed]
+azurerm_network_interface_backend_address_pool_association.vm1_backend: Creation complete after 7s [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/networkInterfaces/lab-vm1-nic/ipConfigurations/internal|/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/loadBalancers/lab-loadbalancer/backendAddressPools/backend-pool]
+azurerm_network_interface_backend_address_pool_association.vm2_backend: Creation complete after 9s [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/networkInterfaces/lab-vm2-nic/ipConfigurations/internal|/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/loadBalancers/lab-loadbalancer/backendAddressPools/backend-pool]
+azurerm_lb_rule.http_rule: Still creating... [10s elapsed]
+azurerm_linux_virtual_machine.vm: Still creating... [20s elapsed]
+azurerm_lb_rule.http_rule: Creation complete after 11s [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Network/loadBalancers/lab-loadbalancer/loadBalancingRules/http-rule]
+azurerm_linux_virtual_machine.vm2: Creation complete after 17s [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Compute/virtualMachines/lab-vm2]
+azurerm_linux_virtual_machine.vm: Creation complete after 24s [id=/subscriptions/5f55b5a1-09ef-4b87-b02d-30e1a8347b3d/resourceGroups/lab-net-rg/providers/Microsoft.Compute/virtualMachines/lab-vm1]
+
+Apply complete! Resources: 21 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+load_balancer_ip = "172.191.49.137"
+vm1_public_ip = "52.170.0.187"
+vm2_public_ip = "172.206.208.114"
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab07$ 
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab07$ 
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab07$ 
+
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab07$ ssh azureuser@52.170.0.187
+The authenticity of host '52.170.0.187 (52.170.0.187)' can't be established.
+ED25519 key fingerprint is SHA256:QYUpZS1InIaJiMtOeepaW7K1CC7fCe10MvEZyXKcF4o.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '52.170.0.187' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 6.8.0-1026-azure x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Fri Apr 25 23:40:46 UTC 2025
+
+  System load:  0.0               Processes:             113
+  Usage of /:   5.3% of 28.89GB   Users logged in:       0
+  Memory usage: 30%               IPv4 address for eth0: 10.0.1.4
+  Swap usage:   0%
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+azureuser@lab-vm1:~$ exit
+logout
+Connection to 52.170.0.187 closed.
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab07$ ssh azureuser@172.206.208.114
+The authenticity of host '172.206.208.114 (172.206.208.114)' can't be established.
+ED25519 key fingerprint is SHA256:LyWO0spcte+/LUsjK3PCOz0YSnPJMnO+UPC2KJkyFjw.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '172.206.208.114' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 6.8.0-1026-azure x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Fri Apr 25 23:42:24 UTC 2025
+
+  System load:  0.0               Processes:             113
+  Usage of /:   5.3% of 28.89GB   Users logged in:       0
+  Memory usage: 30%               IPv4 address for eth0: 10.0.1.5
+  Swap usage:   0%
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+azureuser@lab-vm2:~$ uname -a
+Linux lab-vm2 6.8.0-1026-azure #31~22.04.1-Ubuntu SMP Thu Mar 20 04:12:50 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+azureuser@lab-vm2:~$ exit
+logout
+Connection to 172.206.208.114 closed.
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab07$ ssh azureuser@52.170.0.187
+Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 6.8.0-1026-azure x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Fri Apr 25 23:43:50 UTC 2025
+
+  System load:  0.02              Processes:             113
+  Usage of /:   5.4% of 28.89GB   Users logged in:       0
+  Memory usage: 32%               IPv4 address for eth0: 10.0.1.4
+  Swap usage:   0%
+
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+New release '24.04.2 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+
+Last login: Fri Apr 25 23:40:47 2025 from 191.92.22.183
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+azureuser@lab-vm1:~$ uname -a
+Linux lab-vm1 6.8.0-1026-azure #31~22.04.1-Ubuntu SMP Thu Mar 20 04:12:50 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+azureuser@lab-vm1:~$ exit
+logout
+Connection to 52.170.0.187 closed.
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab07$ 

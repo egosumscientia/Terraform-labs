@@ -1,0 +1,61 @@
+TERMINAL#1:
+
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab07$ while true; do curl -s http://172.191.49.137/; sleep 1; done
+Hola desde VM1
+Hola desde VM1
+Hola desde VM1
+Hola desde VM1
+Hola desde VM2
+Hola desde VM2
+Hola desde VM2
+Hola desde VM2
+Hola desde VM2
+Hola desde VM2
+Hola desde VM2
+Hola desde VM2
+Hola desde VM1
+Hola desde VM1
+Hola desde VM1
+Hola desde VM1
+Hola desde VM1
+Hola desde VM1
+Hola desde VM1
+Hola desde VM1
+Hola desde VM1
+Hola desde VM1
+Hola desde VM2
+Hola desde VM2
+Hola desde VM2
+Hola desde VM2
+Hola desde VM2
+Hola desde VM2
+^C
+
+##############################
+
+TERMINAL#2
+
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab07$ while true; do curl -s http://172.191.49.137/; sleep 1; done
+Hola desde VM2
+Hola desde VM2
+Hola desde VM2
+Hola desde VM2
+Hola desde VM1
+Hola desde VM1
+Hola desde VM1
+Hola desde VM1
+Hola desde VM1
+Hola desde VM1
+Hola desde VM1
+Hola desde VM1
+Hola desde VM1
+Hola desde VM1
+Hola desde VM1
+Hola desde VM2
+Hola desde VM2
+Hola desde VM2
+Hola desde VM2
+Hola desde VM2
+Hola desde VM1
+^C
+pauloenrique@pauloenrique-Latitude-E7450:~/Documents/Development/Terraform-labs/Lab07$ 
