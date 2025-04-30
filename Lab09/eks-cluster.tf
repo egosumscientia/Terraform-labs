@@ -41,7 +41,6 @@ resource "kubernetes_config_map" "aws_auth" {
   data = {
     mapUsers = <<EOT
     - userarn: arn:aws:iam::800917983494:user/paulotoro
-      username: paulotoro
       groups:
         - system:masters
     EOT

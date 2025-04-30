@@ -5,7 +5,6 @@ metadata:
   namespace: kube-system
 data:
   mapUsers: |
-    - userarn: arn:aws:iam::800917983494:user/paulotoro
-      username: paulotoro
+    - userarn: arn:aws:iam::800917983494:user/myUser01
       groups:
         - system:masters  # Grants full admin access (use cautiously!)
